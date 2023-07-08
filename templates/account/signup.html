@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>E-GOV</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/login.css' %}" />
+	</head>
+	<body class="single is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="/">E-GOV</a></h1>
+						<nav class="links">
+						</nav>
+						<nav class="main">
+							<ul>
+							</ul>
+						</nav>
+					</header>
+
+
+				<!-- Main -->
+				<div class="popup-box">
+					<div class="popup-content">
+					  <h2>Login</h2>
+					  <form  method="POST" >
+                        {% csrf_token %}
+                        <h1 >
+                            Sign Up
+                        </h1>
+                        <div class=" text-center my-4">
+                            {% if form.errors %}
+                            <p class="text-primary_red " style="color: red;">
+                                {{form.errors.email}}
+                                {{form.errors.password1}}
+                                {{form.errors.password2}}
+                            {% endif %}
+                            </p>
+                        <div> 
+                            <Label >
+                                Email
+                            </Label>
+                            <input  type="email" name="email" id="id_email" placeholder="Your Email">
+                        </div>
+                        <div '> 
+                            <Label >
+                                Password
+                            </Label>
+                            <input type="password" name="password1" id="id_password1" placeholder="Password">
+                        </div>
+                        <div > 
+                            <Label >
+                                Confirm Password
+                            </Label>
+                            <input type="password" name="password2" id="id_password2" placeholder="Password">
+                        </div>
+                        {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <div style="text-align: center">
+                            <button type="submit" >
+                                Sign Up
+                            </button>
+                        </div>
+        
+                        <div style="text-align: center">
+                            <p>
+                                Have account already ? <a href="{% url 'account_login' %}"> Log In</a>
+                            </p>
+                        </div>
+                    </form>
+					</div>
+				  </div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>

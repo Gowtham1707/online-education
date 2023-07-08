@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>E-LEARN</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="/">E-LEARN</a></h1>
+						<nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="POST" action="#">
+										<input type="text" name="title" placeholder="Search" />
+									</form>
+								</li>
+								<li>
+								      <h3><a href="{% url 'account_login' %}" class="button large fit">Login</a></h3>
+								</li>
+								<li class="menu">
+									<h1> &nbsp</h1>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<section id="menu">
+                        
+						<!-- Search -->
+							<section>
+								<form class="search" method="get" action="#">
+									<input type="text" name="query" placeholder="Search" />
+								</form>
+							</section>
+
+						<!-- Actions -->
+							<section>
+								<ul class="actions stacked">
+									<li><center><h4>Login to continue</h4></center></li>
+									<li><a href="{% url 'account_login' %}" class="button large fit">Log In</a></li>
+								</ul>
+							</section>
+
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<center><h2>Online-Education System</h2>
+										<p>Open for all ages</p></center>
+									</div>
+								</header>
+								<center><a href=""><img src="{% static './images/Online-learning.gif' %}" class="mini-posts" alt=""/></a></center>
+								<p>This is a platform that allows students to access educational resources and connect with teachers remotely through the internet. This application offers a flexible learning environment that allows students to learn at their own pace, anytime and anywhere. With online education, students can access a variety of multimedia resources, including videos, presentations, and interactive quizzes. They can also interact with their teachers and peers through online forums, chat rooms, and video conferencing. The online education system application offers many benefits such as reduced costs, accessibility, flexibility, and convenience, making it an ideal platform for students of all ages and backgrounds.</p>
+								<footer>
+									<ul class="actions">
+										<li><a href="{% url 'account_login' %}" class="button large">LOGIN</a></li>
+									</ul>
+								</footer>
+							</article>
+
+					</div>
+
+				<!-- Sidebar -->
+					<section id="sidebar">
+
+						<!-- Intro -->
+							<section id="intro">
+								<a href="#" class="logo"><img src="{% static 'images/logo.jpg' %}" alt="" /></a>
+								<header>
+									<h2>E-LEARN</h2>
+									<p>Education in your hands</p>
+								</header>
+							</section>
+
+						
+						<!-- About -->
+							<section class="blurb">
+								<h2>About</h2>
+								<p>  </p>
+							</section>
+
+						<!-- Footer -->
+							<section id="footer">
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+									<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{static 'assets/js/main.js'}"></script>
+
+	</body>
+</html>

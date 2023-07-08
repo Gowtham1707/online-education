@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>E-LEARN</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<!-- <link rel="stylesheet" href="{% static 'assests/css/abc.css' %}"> -->
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="/">E-LEARN</a></h1>
+						<nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="get" action="#">
+										<input type="text" name="query" placeholder="Search" />
+									</form>
+								</li>
+                                <li>
+                                    <h3><a href="{% url 'account_logout' %}" class="button large" >Log Out</a></h3>
+                                </li>
+							</ul>
+						</nav>
+					</header>
+
+				
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<center><h2>DASHBOARD</h2>
+										<p></p></center>
+                                        <table>
+                                            <tr><td><h1>Class {{standard}}</h1></td><td><h1>{{name}}</h1></td></tr>
+                                        </table>
+									</div>
+                                        
+                                    
+								</header>
+								<!-- Mini Posts -->
+                                    <section >
+										<h2>Available Courses</h2>
+                                        <div class="mini-posts"
+										>
+											{% for movie in movies %}
+											<a href="">
+												<div class="dashpoard-post"style="
+												display: flex;
+												justify-content: space-around;
+												">
+													<img src="{{movie.image.url}}" class="dashboard-course-image" alt="" style="width: 50px; height: 50px ">
+													<!-- <p>{{movie.subject}}</p> -->
+													<p class="dashboard-course-title" style="
+													margin-top: auto;
+													">{{movie.title}}</p>
+												</div>
+											</a>
+											<hr>
+											{% endfor %}
+                                        </div>
+                                    </section>
+									<section>
+										<form action="{% url 'onlineeducation:movielanguage'%}" method="POST">
+											{% csrf_token %}
+											<h4>Select language</h4>
+											<select id="category-select" name="language">
+												<option value="all">Select a language</option>
+												<option value="English">English</option>
+												<option value="Tamil">Tamil</option>
+												<option value="Hindi">Hindi</option>
+											</select>
+											<input type="submit">
+										</form>
+                                    </section>
+								<footer>
+									
+								</footer>
+							</article>
+
+					</div>
+
+				<!-- Sidebar -->
+					<section id="sidebar">
+
+						<!-- Intro -->
+							<section id="intro">
+								<a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+								<header>
+									<h2>E-LEARN</h2>
+									<p>Education in your hands</p>
+								</header>
+							</section>
+
+							<section class="blurb">
+								{% if standard == '9' %}
+									<h2>Want to Test Your Knowledge! Take a QUIZ</h2>
+									<ul>
+										<li><a href="{% url 'onlineeducation:totalinternamreflection' %}">Total Internal Reflection</a></li>
+										<li><a href="{% url 'onlineeducation:emf' %}">EMF</a></li>
+									</ul>
+									
+								{% else %}
+									<h2>No quiz currently available for This Standard</h2>
+								{% endif %}
+							</section>
+
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/browser.min.js' %}"></script>
+        <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+        <script src="{% static 'assets/js/util.js' %}"></script>
+        <script src="{static 'assets/js/main.js'}"></script>
+			
+
+	</body>
+</html>

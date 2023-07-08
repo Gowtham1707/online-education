@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>E-LEARN</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+	</head>
+	<body class="single is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+                <header id="header">
+                    <h1><a href="/">E-LEARN</a></h1>
+                    <nav class="links">
+                    </nav>
+                    <nav class="main">
+                        <ul>
+                            <li>
+                                <h3><a href="{% url 'account_logout' %}" class="button large" >Log Out</a></h3>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                
+
+				
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">VIDEO</a></h2>
+                                        <button><a href="https://jamboard.google.com/d/1USdv5MuUGMmxaa7wvxnuijZM-W9wdq5i8XaIG2lSdCE/edit?usp=sharing"><p
+                                            style="margin:auto">EASY-ACCESS-WHITEBOARD</p></a></button>
+									</div>
+									<div class="meta">
+                                        <span id="date-time"></span>
+									</div>
+								</header>
+                                <form action="{% url 'onlineeducation:movielanguage'%}" method="POST">
+                                    {% csrf_token %}
+                                    <h4>Select language</h4>
+                                    <select id="category-select" name="language">
+                                        <option value="all">Select a language</option>
+                                        <option value="English">English</option>
+                                        <option value="Tamil">Tamil</option>
+                                        <option value="Hindi">Hindi</option>
+                                    </select>
+                                    <input type="submit">
+                                </form>
+								<div style="margin: 20px">
+                                    <section>
+                                        <div class="mini-posts">
+                                            {% if movies %}
+                                                {% for movie in movies %}
+                                                <div style="display: flex; justify-content: space-between">
+                                                    <a href="{% url 'onlineeducation:play-movie' movie_id=movie.uuid %}">
+                                                        <div class=" h-40 m-4  bg-blue-500 flex-shrink-0 rounded-md cursor-pointer w-40"
+                                                    >
+                                                            <img src="{{movie.image.url}}" class="w-full h-full " alt="" style="width: 100px; height: 100px 
+                                                            " 
+                                                            >
+                                                        </div>
+                                                    </a>
+                                                    <p>{{movie.description}}</p>
+                                                    {% if movie.material %}
+                                                        <a href="{{movie.material.url}}" download><button>Course Materials</button></a>
+                                                    {% endif %}
+                                                </div>
+                                                {% endfor %}
+                                            {% else %}
+                                                <p>No Videous found in this language!!</p>
+                                                <p>Search for other Language</p>
+                                            {% endif %}
+                                        </div>
+                                    </section>
+                                </div>
+							</article>
+
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/browser.min.js' %}"></script>
+        <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+        <script src="{% static 'assets/js/util.js' %}"></script>
+        <script src="{static 'assets/js/main.js'}"></script>
+            <script>
+                function updateTime() {
+                  var now = new Date();
+                  var dateTime = now.toLocaleString();
+                  document.getElementById("date-time").innerHTML = dateTime;
+                }
+                setInterval(updateTime, 1000);
+              </script>
+
+	</body>
+</html>
